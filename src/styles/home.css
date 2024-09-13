@@ -1,0 +1,17 @@
+body{
+    background-color: #E2E2B6;
+}
+.mentorinfo{
+    background-color: white;
+    margin:30px;
+    padding:10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+}
+.mentorinfo > table>tr>td{
+    font-size: 20px;
+    font-weight: bold;
+    padding: 5px;    
+}
