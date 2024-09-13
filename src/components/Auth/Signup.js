@@ -95,7 +95,7 @@ const Signup = () => {
     }
     if(checkEmptyOrNull()){
 
-      await axios.post("http://localhost:8000/api/v1/auth/register",userData).then((res) => {
+      await axios.post("https://mms-server-2s8s.onrender.com/api/v1/auth/register",userData).then((res) => {
         console.log(res);
         const user = res.data.data;
         localStorage.setItem("user", JSON.stringify(user));

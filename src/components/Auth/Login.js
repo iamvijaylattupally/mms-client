@@ -23,7 +23,7 @@ const Login = () => {
     const handleLogin = async(e) => {
         e.preventDefault();
         
-        await axios.post("http://localhost:8000/api/v1/auth/login",userData).then((res) => {
+        await axios.post("https://mms-server-2s8s.onrender.com/api/v1/auth/login",userData).then((res) => {
           console.log(res);
           const user = res.data.data;
           localStorage.setItem("user", JSON.stringify(user));
