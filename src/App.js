@@ -24,7 +24,7 @@ import AddMentor from './pages/AddMentor.js';
 import AssisgnStudents from './pages/AssisgnStudents.js';
 import FetchResult from './pages/FetchResult.js';
 import AssignSelectedStudentsToMentor from './pages/AssignSelectedStudentsToMentor.js';
-
+import Calendar from './pages/calendar.js';
 const AppLayout = () => (
   <>
     <Navbar />
@@ -71,6 +71,10 @@ const router = createBrowserRouter([
       {
         path:"/assign-to-mentor",
         element: <AssignSelectedStudentsToMentor />
+      },
+      {
+        path:"/calendar",
+        element: <Calendar />
       }
     ],
   },

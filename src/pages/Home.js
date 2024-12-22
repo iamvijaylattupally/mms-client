@@ -1,32 +1,31 @@
-import React, { useContext } from 'react';
+import React, { useContext } from "react";
 import "../styles/home.css";
 import { AuthContext } from "../Contexts/AuthContext.js";
-
 const Home = () => {
-  const { user, setUser } = useContext(AuthContext);
+  const { user } = useContext(AuthContext); // Ensure AuthContext is provided
   
+
   return (
     <>
-      {user?.ismentor &&
+      {user?.ismentor && (
         <div className="home">
           <h1>Welcome Mentor</h1>
           <p>Here you can view the list of students and their details.</p>
         </div>
-      }
-      {user?.isadmin &&
+      )}
+      {user?.isadmin && (
         <div className="home">
-          <h1>Welcome admin</h1>
+          <h1>Welcome Admin</h1>
           <p>Here you can view the list of mentors and their details.</p>
         </div>
-      }
-      {user?.isadmin === false && user?.ismentor === false &&
+      )}
+      {!user?.isadmin && !user?.ismentor && (
         <div>
-          <h1>Welcome Student</h1>
-          <p>Here you can view the list of mentors and their details.</p>
+          Student
         </div>
-      }
+      )}
     </>
   );
-}
+};
 
 export default Home;
