@@ -41,6 +41,9 @@ function Navbar() {
                 </Link>
               </li>
               {SidebarData.map((item, index) => {
+                if(!user.isadmin && item.title === "Add Mentor" || !user.isadmin && item.title === "Assign Students"|| (!user.isadmin && !user.ismentor) && item.title=="FetchResult"){
+                  return null;
+                }
                 return (
                   <li key={index} className={item.cName}>
                     <Link to={item.path}>

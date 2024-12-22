@@ -16,16 +16,19 @@ import Signup from "./components/Auth/Signup.js";
 import "./App.css";
 import AuthWrapper from './components/Auth/AuthWrapper.js';
 import { AuthProvider } from './Contexts/AuthContext.js';
+import { StudentProvider } from "./Contexts/SelectedStudentContext.js"
 import { ToastContainer, toast } from 'react-toastify';
 import Login from './components/Auth/Login.js';
 import 'react-toastify/dist/ReactToastify.css';
-
+import AddMentor from './pages/AddMentor.js';
+import AssisgnStudents from './pages/AssisgnStudents.js';
+import FetchResult from './pages/FetchResult.js';
+import AssignSelectedStudentsToMentor from './pages/AssignSelectedStudentsToMentor.js';
 
 const AppLayout = () => (
   <>
     <Navbar />
     <Outlet />
-    <Footer />
   </>
 );
 const router = createBrowserRouter([
@@ -34,37 +37,53 @@ const router = createBrowserRouter([
     element: <Signup />,
   },
   {
-    path:'/login',
+    path: '/login',
     element: <Login />
   },
   {
     element: (
       <AuthWrapper>
-      <AppLayout />
+        <AppLayout />
       </AuthWrapper>
-      ),
+    ),
     children: [
-      
+
       {
         path: "/",
         element: <Home />,
       },
       {
-        path: "profile",
+        path: "/profile",
         element: <Profile />,
       },
+      {
+        path: "/addmentor",
+        element: <AddMentor />
+      },
+      {
+        path: "/assignstudents",
+        element:<AssisgnStudents />
+      },
+      {
+        path: "/fetchresults",
+        element:<FetchResult />
+      },
+      {
+        path:"/assign-to-mentor",
+        element: <AssignSelectedStudentsToMentor />
+      }
     ],
   },
 ]);
 
 function App() {
   return (
-    <>  
-    <AuthProvider>
-      <RouterProvider router={router} />
-      <ToastContainer 
-      />
-    </AuthProvider>
+    <>
+      <AuthProvider>
+        <RouterProvider router={router} />
+        <ToastContainer
+        />
+      </AuthProvider>
     </>
   );
 }

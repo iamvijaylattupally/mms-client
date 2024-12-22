@@ -1,0 +1,51 @@
+.center-table {
+    margin: 0 auto;
+    max-width: 80%; /* Adjust the width to your preference */
+    text-align: center;
+}
+
+/* Existing checkbox styles here */
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.search-container {
+    max-width: 300px;
+    width: 100%;
+}
+
+.center-table {
+    margin: 0 auto;
+    max-width: 80%;
+    text-align: center;
+}
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.pagination {
+    display: flex;
+}
+
+.pagination button {
+    margin: 0 5px;
+    padding: 8px 12px;
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    cursor: pointer;
+}
+
+.pagination button.active {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+.pagination button:hover:not(.active) {
+    background-color: #ddd;
+}

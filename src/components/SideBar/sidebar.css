@@ -91,7 +91,7 @@
 
 .nav-menu {
   background-color:#01014a;
-  width: 200px;
+  width: 300px;
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -113,7 +113,6 @@
   padding: 8px 0px 8px 16px;
   list-style: none;
   height: 60px;
-  
 }
 
 .nav-text a {

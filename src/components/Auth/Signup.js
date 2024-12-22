@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from "react-toastify";
 import axios from 'axios';
 import "./styles.css";
+import "../../pagescss/loader.css";
+import {BACKENDURL} from "../../constants.js"; 
 
 const Signup = () => {
   const { setUser } = useContext(AuthContext);
@@ -11,6 +13,7 @@ const Signup = () => {
   const [storedUser, setStoredUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [activeStep, setActiveStep] = useState(0);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [userData, setUserData] = useState({
     fullname: '',
     mobile: "",
@@ -89,13 +92,14 @@ const Signup = () => {
   }
   const handleSignup = async(e) => {
     e.preventDefault();
+    setIsSubmitting(true);
     if(userData.password !== userData.cpassword){
       toast.error("Passwords do not match!");
       return;
     }
     if(checkEmptyOrNull()){
 
-      await axios.post("https://mms-server-2s8s.onrender.com/api/v1/auth/register",userData).then((res) => {
+      await axios.post(`${BACKENDURL}/api/v1/auth/register`,userData).then((res) => {
         console.log(res);
         const user = res.data.data;
         localStorage.setItem("user", JSON.stringify(user));
@@ -105,8 +109,10 @@ const Signup = () => {
       })
       .catch((err) => {
           toast.error("Invalid Credentials Try Again");
+          setIsSubmitting(false);
       })
     }
+    setIsSubmitting(false);
     
     
   };
@@ -119,6 +125,16 @@ const Signup = () => {
 
   return (
     <>
+    {isSubmitting && (
+                <div className="loader-overlay">
+                    <div className="loader">
+                        <div className="circle"></div>
+                        <div className="circle"></div>
+                        <div className="circle"></div>
+                        <div className="circle"></div>
+                    </div>
+                </div>
+            )}
       {!storedUser && (
         <section>
           <div className="container overflow-hidden" style={{ marginTop: '0px', marginBottom: '10px', paddingBottom: '300px', paddingTop: '57px' }}>

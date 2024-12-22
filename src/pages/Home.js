@@ -7,37 +7,24 @@ const Home = () => {
   
   return (
     <>
-      {!user?.ismentor && !user?.isadmin ? (
-        <>
-          <h1 style={{ textAlign: "center" }}>Welcome</h1>
-          <div className='mentorinfo'>
-            <table>
-              <caption><h3>Your Mentor Info :</h3></caption>
-              <tbody>
-                <tr>
-                  <td>Mentor Name:</td>
-                  <td>Name</td>
-                </tr>
-                <tr>
-                  <td>Mentor Phone:</td>
-                  <td>Phone</td>
-                </tr>
-                <tr>
-                  <td>Mentor Email:</td>
-                  <td>Email</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </>
-      ) : (
-        <>
-          <div className='admininfo'>
-            <h1>Admin or Mentor Information</h1>
-            {/* Add additional admin/mentor info here */}
-          </div>
-        </>
-      )}
+      {user?.ismentor &&
+        <div className="home">
+          <h1>Welcome Mentor</h1>
+          <p>Here you can view the list of students and their details.</p>
+        </div>
+      }
+      {user?.isadmin &&
+        <div className="home">
+          <h1>Welcome admin</h1>
+          <p>Here you can view the list of mentors and their details.</p>
+        </div>
+      }
+      {user?.isadmin === false && user?.ismentor === false &&
+        <div>
+          <h1>Welcome Student</h1>
+          <p>Here you can view the list of mentors and their details.</p>
+        </div>
+      }
     </>
   );
 }
