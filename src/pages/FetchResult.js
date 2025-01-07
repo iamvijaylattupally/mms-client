@@ -2,30 +2,66 @@ import React, { useState, useContext } from "react";
 import axios from "axios";
 import { AuthContext } from "../Contexts/AuthContext";
 import "../pagescss/loader.css";
-import {BACKENDURL,RESULTSCRAPEURL} from "../constants.js";
+import { RESULTSCRAPEURL } from "../constants.js";
+
+const mockRollNumbers = [
+    { rollNumber: "22B81A05R5", name: "Alice" },
+    { rollNumber: "22B81A05R6", name: "Bob" },
+    { rollNumber: "22B81A05R3", name: "Charlie" },
+    { rollNumber: "22B81A05R4", name: "David" },
+    { rollNumber: "22B81A05R5", name: "Alice" },
+    { rollNumber: "22B81A05R6", name: "Bob" },
+    { rollNumber: "22B81A05R3", name: "Charlie" },
+    { rollNumber: "22B81A05R4", name: "David" },
+    { rollNumber: "22B81A05R5", name: "Alice" },
+    { rollNumber: "22B81A05R6", name: "Bob" },
+    { rollNumber: "22B81A05R3", name: "Charlie" },
+    { rollNumber: "22B81A05R4", name: "David" },
+    { rollNumber: "22B81A05R5", name: "Alice" },
+    { rollNumber: "22B81A05R6", name: "Bob" },
+    { rollNumber: "22B81A05R3", name: "Charlie" },
+    { rollNumber: "22B81A05R4", name: "David" },
+];
+
 const ResultsScraper = () => {
     const { user } = useContext(AuthContext);
     const [link, setLink] = useState("");
-    const [rollnumbers, setRollnumbers] = useState(""); // Input as comma-separated values
+    const [selectedRollNumbers, setSelectedRollNumbers] = useState([]);
     const [results, setResults] = useState([]);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
+    const [selectAll, setSelectAll] = useState(false); // State for "Select All"
+
+    const handleRollNumberChange = (rollNumber) => {
+        setSelectedRollNumbers((prev) =>
+            prev.includes(rollNumber)
+                ? prev.filter((roll) => roll !== rollNumber)
+                : [...prev, rollNumber]
+        );
+    };
+
+    const handleSelectAllChange = () => {
+        if (selectAll) {
+            setSelectedRollNumbers([]); // Deselect all
+        } else {
+            setSelectedRollNumbers(mockRollNumbers.map(student => student.rollNumber)); // Select all
+        }
+        setSelectAll(!selectAll); // Toggle Select All state
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
         setError(null);
 
-        const rollNumbersArray = rollnumbers.split(",").map((roll) => roll.trim());
-
         try {
             const response = await axios.post(`${RESULTSCRAPEURL}/getresults`, {
                 link,
-                rollnumbers: rollNumbersArray,
+                rollnumbers: selectedRollNumbers,
             });
             setResults(response.data);
         } catch (err) {
-            console.log(err)
+            console.error(err); // Log error for debugging
             setError(
                 err.response?.data?.error || "An error occurred while fetching results."
             );
@@ -63,15 +99,32 @@ const ResultsScraper = () => {
                             />
                         </div>
                         <div>
-                            <label htmlFor="rollnumbers">Enter Roll Numbers (comma-separated):</label>
-                            <input
-                                type="text"
-                                id="rollnumbers"
-                                value={rollnumbers}
-                                onChange={(e) => setRollnumbers(e.target.value)}
-                                required
-                                style={{ width: "100%", padding: "10px", margin: "10px 0" }}
-                            />
+                            <h3>Select Roll Numbers:</h3>
+                            
+                            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(150px, 1fr))", gap: "10px" }}>
+                                {mockRollNumbers.map((student) => (
+                                    <label key={student.rollNumber} className="custom-checkbox-wrapper">
+                                        <input
+                                            type="checkbox"
+                                            className="custom-checkbox-input"
+                                            checked={selectedRollNumbers.includes(student.rollNumber)}
+                                            onChange={() => handleRollNumberChange(student.rollNumber)}
+                                        />
+                                        <div className="custom-checkbox-mark"></div>
+                                        {student.rollNumber} {/* Display the roll number */}
+                                    </label>
+                                ))}
+                            </div>
+                            <label className="custom-checkbox-wrapper">
+                                <input
+                                    type="checkbox"
+                                    className="custom-checkbox-input"
+                                    checked={selectAll}
+                                    onChange={handleSelectAllChange}
+                                />
+                                <div className="custom-checkbox-mark"></div>
+                                Select All
+                            </label>
                         </div>
                         <button
                             type="submit"
