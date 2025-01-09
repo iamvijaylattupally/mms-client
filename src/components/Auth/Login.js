@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import { AuthContext } from '../../Contexts/AuthContext.js';
 import { BACKENDURL } from "../../constants.js";
 import "../../pagescss/loader.css";
+import "../../pagescss/login.css"
 const Login = () => {
     const navigate = useNavigate();
     const [loginas, setLoginas] = useState(0);
@@ -22,7 +23,7 @@ const Login = () => {
     const handleLogin = async (e) => {
         e.preventDefault();
         setIsLoading(true);  // Show loader when login starts
-        
+
         try {
             let response;
             switch (loginas) {
@@ -35,7 +36,7 @@ const Login = () => {
                 default:
                     response = await axios.post(`${BACKENDURL}/api/v1/mentor/login`, userData);
                     setIsLoading(false);  // Hide loader on invalid login
-                    
+
             }
             const user = response.data.data;
             localStorage.setItem("user", JSON.stringify(user));
@@ -109,12 +110,36 @@ const Login = () => {
                                                 Login
                                             </button>
                                         </div>
-                                        <button type="button" onClick={handleSignup} className="btn btn-link" style={{ color: 'blue' }}>New User? Signup</button>
+                                        <button class="cta" type="button" onClick={handleSignup}>
+                                            <span class="hover-underline-animation"> New User? Signup</span>
+                                            <svg
+                                                id="arrow-horizontal"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                width="30"
+                                                height="10"
+                                                viewBox="0 0 46 16"
+                                            >
+                                                <path
+                                                    id="Path_10"
+                                                    data-name="Path 10"
+                                                    d="M8,0,6.545,1.455l5.506,5.506H-30V9.039H12.052L6.545,14.545,8,16l8-8Z"
+                                                    transform="translate(30)"
+                                                ></path>
+                                            </svg>
+                                        </button>
+
+                                        <button class="cta" type="button" onClick={() => { setLoginas(2) }} >
+                                            <span class="hover-underline-animation">{loginas === 2 ? "" : "Click here To Login as Admin"}</span>
+                                        </button>
+                                        <button class="cta" type="button" onClick={() => { setLoginas(1) }} >
+                                            <span class="hover-underline-animation">{loginas === 1 ? "" : "Click here To Login as Mentor"}</span>
+                                        </button>
+                                        <button class="cta" type="button" onClick={() => { setLoginas(0) } }>
+                                            <span class="hover-underline-animation">{loginas === 0 ? "" : "Click here To Login as Student"}</span>
+                                        </button>
+
                                         <br />
                                         <button type="button" style={{ color: 'blue' }} className="btn btn-link">Forgot your password?</button>
-                                        <button type="button" style={{ color: 'blue' }} onClick={() => { setLoginas(2) }} className="btn btn-link">{loginas === 2 ? "" : "Click here To Login as Admin"}</button>
-                                        <button type="button" style={{ color: 'blue' }} onClick={() => { setLoginas(1) }} className="btn btn-link">{loginas === 1 ? "" : "Click here To Login as Mentor"}</button>
-                                        <button type="button" style={{ color: 'blue' }} onClick={() => { setLoginas(0) }} className="btn btn-link">{loginas === 0 ? "" : "Click here To Login as Student"}</button>
                                     </form>
                                 </div>
                             </div>

@@ -1,0 +1,68 @@
+.mango{
+    height: 70svh;
+    width: 100svw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.apple {
+    width: 50svw;
+    height: 50svh;
+    padding: 0 15px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 12px;
+    background: #fff;
+    border-radius: 20px;
+  }
+  
+  .apple > * {
+    margin: 0;
+  }
+  
+  .apple__header {
+    font-size: 23px;
+    font-weight: 900;
+    color: #333;
+  }
+  
+  .apple__text {
+    font-size: 13px;
+    line-height: 18px;
+    color: #333;
+  }
+  
+  .apple__banana-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .apple__banana-group input {
+    margin-top: 10px;
+    width: 200px;
+    outline: 0;
+    background: rgb(255, 255, 255);
+    box-shadow: transparent 0px 0px 0px 1px inset;
+    padding: 0.6em;
+    border-radius: 14px;
+    border: 1px solid #333;
+    color: black;
+  }
+  
+  .apple__banana-group button {
+    border: 0;
+    background: #111;
+    color: #fff;
+    padding: 0.68em;
+    border-radius: 14px;
+    font-weight: bold;
+  }
+  
+  .grape:hover {
+    opacity: 0.8;
+  }
+  

@@ -24,6 +24,8 @@ import AddMentor from './pages/AddMentor.js';
 import AssisgnStudents from './pages/AssisgnStudents.js';
 import FetchResult from './pages/FetchResult.js';
 import AssignSelectedStudentsToMentor from './pages/AssignSelectedStudentsToMentor.js';
+import ApplyLeave from './pages/ApplyLeave.js';
+import LeaveStatus from './pages/LeaveStatus.js';
 import Calendar from './pages/calendar.js';
 const AppLayout = () => (
   <>
@@ -71,6 +73,14 @@ const router = createBrowserRouter([
       {
         path:"/assign-to-mentor",
         element: <AssignSelectedStudentsToMentor />
+      },
+      {
+        path:"/applyleave",
+        element:<ApplyLeave />
+      },
+      {
+        path:"/leavestatus",
+        element:<LeaveStatus />
       },
       {
         path:"/calendar",
