@@ -8,10 +8,17 @@ const Home = () => {
   return (
     <>
       {user?.ismentor && (
-        <div className="trees-mentor-home">
-          <h1>Welcome Mentor</h1>
-          <p>Here you can view the list of students and their details.</p>
+        <div className="trees-container">
+          <Link to="/leavestatus">
+            <div className="trees-card">
+              <p className="trees-card-text">Inspect Leave</p>
+            </div>
+          </Link>
+          <div className="trees-card">
+            <p className="trees-card-text">View Attendance</p>
+          </div>
         </div>
+
       )}
       {user?.isadmin && (
         <div className="trees-admin-home">
@@ -28,9 +35,9 @@ const Home = () => {
             <p className="trees-card-text">One To One Mentoring</p>
           </div>
           <Link to="/applyleave">
-          <div className="trees-card">
-            <p className="trees-card-text">Apply Leave</p>
-          </div>
+            <div className="trees-card">
+              <p className="trees-card-text">Apply Leave</p>
+            </div>
           </Link>
           <div className="trees-card">
             <p className="trees-card-text">Notice Board</p>
