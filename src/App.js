@@ -27,6 +27,10 @@ import AssignSelectedStudentsToMentor from './pages/AssignSelectedStudentsToMent
 import ApplyLeave from './pages/ApplyLeave.js';
 import LeaveStatus from './pages/LeaveStatus.js';
 import Calendar from './pages/calendar.js';
+import Events from './pages/Events.js';
+import Timetable from './pages/Timetable.js';
+import NoticeBoard from './pages/NoticeBoard.js';
+
 const AppLayout = () => (
   <>
     <Navbar />
@@ -81,6 +85,18 @@ const router = createBrowserRouter([
       {
         path:"/leavestatus",
         element:<LeaveStatus />
+      },
+      {
+        path:"/events",
+        element:<Events />
+      },
+      {
+        path:"/timetable",
+        element:<Timetable />
+      },
+      {
+        path:"/noticeboard",
+        element:<NoticeBoard />
       },
       {
         path:"/calendar",

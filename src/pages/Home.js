@@ -15,10 +15,24 @@ const Home = () => {
             </div>
           </Link>
           <div className="trees-card">
-            <p className="trees-card-text">View Attendance</p>
+            <p className="trees-card-text">Inspect Attendance</p>
           </div>
+          <Link to="/events">
+            <div className="trees-card">
+              <p className="trees-card-text">Events</p>
+            </div>
+          </Link>
+          <Link to="/noticeboard">
+          <div className="trees-card">
+            <p className="trees-card-text">Notice Board</p>
+          </div>
+          </Link>
+          <Link to="/timetable">
+          <div className="trees-card">
+            <p className="trees-card-text">Timetable</p>
+          </div>
+          </Link>
         </div>
-
       )}
       {user?.isadmin && (
         <div className="trees-admin-home">
@@ -39,18 +53,26 @@ const Home = () => {
               <p className="trees-card-text">Apply Leave</p>
             </div>
           </Link>
+          <Link to="/noticeboard">
           <div className="trees-card">
             <p className="trees-card-text">Notice Board</p>
           </div>
-          <div className="trees-card">
-            <p className="trees-card-text">Events</p>
-          </div>
+          </Link>
+          <Link to="/events">
+            <div className="trees-card">
+              <p className="trees-card-text">Events</p>
+            </div>
+          </Link>
+          <Link to="/timetable">
           <div className="trees-card">
             <p className="trees-card-text">Timetable</p>
           </div>
+          </Link>
+          <Link to="/profile">
           <div className="trees-card">
             <p className="trees-card-text">Inspect Profile</p>
           </div>
+          </Link>
           <div className="trees-card">
             <p className="trees-card-text">Know Your Mentor</p>
           </div>
