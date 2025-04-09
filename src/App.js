@@ -22,6 +22,7 @@ import Login from './components/Auth/Login.js';
 import 'react-toastify/dist/ReactToastify.css';
 import AddMentor from './pages/AddMentor.js';
 import AssisgnStudents from './pages/AssisgnStudents.js';
+import Assignment from './pages/Assignment.js';
 import FetchResult from './pages/FetchResult.js';
 import AssignSelectedStudentsToMentor from './pages/AssignSelectedStudentsToMentor.js';
 import ApplyLeave from './pages/ApplyLeave.js';
@@ -81,6 +82,10 @@ const router = createBrowserRouter([
       {
         path:"/applyleave",
         element:<ApplyLeave />
+      },
+      {
+        path:"/assignment",
+        element:<Assignment />
       },
       {
         path:"/leavestatus",

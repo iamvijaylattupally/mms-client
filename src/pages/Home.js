@@ -14,9 +14,11 @@ const Home = () => {
               <p className="trees-card-text">Inspect Leave</p>
             </div>
           </Link>
-          <div className="trees-card">
-            <p className="trees-card-text">Inspect Attendance</p>
-          </div>
+          <Link to="/assignment">
+            <div className="trees-card">
+              <p className="trees-card-text">Assignment Section</p>
+            </div>
+          </Link>
           <Link to="/events">
             <div className="trees-card">
               <p className="trees-card-text">Events</p>
@@ -51,6 +53,11 @@ const Home = () => {
           <Link to="/applyleave">
             <div className="trees-card">
               <p className="trees-card-text">Apply Leave</p>
+            </div>
+          </Link>
+          <Link to="/assignment">
+            <div className="trees-card">
+              <p className="trees-card-text">Assignment Section</p>
             </div>
           </Link>
           <Link to="/noticeboard">
